@@ -19,7 +19,7 @@ export default function Bookmarks() {
   useEffect(() => {
     const fetchBookmarks = async () => {
       try {
-        const response = await fetch("https://localhost:3000/api/bookmarks");
+        const response = await fetch("http://localhost:3000/api/bookmarks");
         const data = await response.json();
         setBookmarks(data);
       } catch (error) {
@@ -29,6 +29,7 @@ export default function Bookmarks() {
 
     fetchBookmarks();
   }, []);
+  console.log(bookmarks);
 
   return (
     <div className="p-4">

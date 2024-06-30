@@ -1,12 +1,14 @@
 // write a route to get all bookmarks by Next.js
 // bookmarks has a title and URL
 
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from "next/server";
 
-const getAllBookmarks = (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET() {
   // Your code to get all bookmarks goes here
-};
-
-export default getAllBookmarks;
-
-
+  const bookmarks = [
+    { title: "Bookmark 1", url: "https://example.com/bookmark1" },
+    { title: "Bookmark 2", url: "https://example.com/bookmark2" },
+    { title: "Bookmark 3", url: "https://example.com/bookmark3" },
+  ];
+  return NextResponse.json(bookmarks, { status: 200 });
+}
