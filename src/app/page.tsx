@@ -1,3 +1,4 @@
+"use client";
 // write component to display list of bookmarks
 // bookmarks has a title and URL
 // get a list of bookmarks from API
@@ -18,7 +19,7 @@ export default function Bookmarks() {
   useEffect(() => {
     const fetchBookmarks = async () => {
       try {
-        const response = await fetch("https://example.com/api/bookmarks");
+        const response = await fetch("https://localhost:3000/api/bookmarks");
         const data = await response.json();
         setBookmarks(data);
       } catch (error) {
@@ -30,12 +31,17 @@ export default function Bookmarks() {
   }, []);
 
   return (
-    <div>
-      <h1>List of Bookmarks</h1>
-      <ul>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">List of Bookmarks</h1>
+      <ul className="space-y-2">
         {bookmarks.map((bookmark) => (
-          <li key={bookmark.url}>
-            <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
+          <li key={bookmark.url} className="border-b border-gray-200">
+            <a
+              href={bookmark.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
               {bookmark.title}
             </a>
           </li>
